@@ -1,7 +1,6 @@
 <?php
 
-namespace VelitSol\Userstamps;
-
+namespace BenySLO\Userstamps;
 
 trait UserstampTrait
 {
@@ -12,7 +11,6 @@ trait UserstampTrait
      * @var array
      */
     private static $dynamic_relations = [];
-
 
     // Contains the userstamp fields which depend on a model event
     // Contains the userstamp fields which depends upon certain expressions
@@ -73,7 +71,7 @@ trait UserstampTrait
                 $mathes = [
                     'depends_on_event' => $this->dependsOnEvent($dependsOn, $eventName),
                     'depends_on_field' => $this->dependsOnField($dependsOn, $model),
-                    'depends_on_expression' => $this->dependsOnExpression($dependsOn, $model)
+                    'depends_on_expression' => $this->dependsOnExpression($dependsOn, $model),
                 ];
 
                 // check if all given conditions were met.
@@ -102,8 +100,9 @@ trait UserstampTrait
      */
     private function dependsOnField($dependsOn, $model)
     {
-        if (empty($dependsOn['depends_on_field']))
+        if (empty($dependsOn['depends_on_field'])) {
             return false;
+        }
 
         return $model->isDirty($dependsOn['depends_on_field']);
     }
@@ -116,8 +115,9 @@ trait UserstampTrait
      */
     private function dependsOnEvent($dependsOn, $eventName)
     {
-        if (empty($dependsOn['depends_on_event']))
+        if (empty($dependsOn['depends_on_event'])) {
             return false;
+        }
 
         // if userstamp depends on one or more than one events, i.e provided in array format
         if (is_array($dependsOn['depends_on_event'])) {
@@ -135,8 +135,9 @@ trait UserstampTrait
      */
     private function dependsOnExpression($dependsOn, $model)
     {
-        if (empty($dependsOn['depends_on_expression']))
+        if (empty($dependsOn['depends_on_expression'])) {
             return false;
+        }
 
         $expression = $dependsOn['depends_on_expression'];
         $pattern = '/\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/';
@@ -157,7 +158,6 @@ trait UserstampTrait
         return in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this)) && !$this->forceDeleting;
     }
 
-
     /***
      * Get userstamp field names from the userstamp array
      * @return mixed
@@ -168,7 +168,6 @@ trait UserstampTrait
             return is_array($v) ? $k : $v;
         })->values()->toArray();
     }
-
 
     /**
      * Create a relation name from the given userstamp field name
@@ -236,7 +235,6 @@ trait UserstampTrait
         return parent::__call($method, $parameters);
     }
 
-
     /**
      * Get the class being used to provide a User.
      * @return string
@@ -249,7 +247,6 @@ trait UserstampTrait
         return auth()->guard()->getProvider()->getModel();
     }
 
-
     /**
      * Model scope to load userstamp relations like Model:withUserstamps()->get()
      * @param $query
@@ -261,7 +258,4 @@ trait UserstampTrait
         return $query;
     }
 
-
 }
-
-
