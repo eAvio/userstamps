@@ -11,6 +11,9 @@
 * This package requires PHP 5.6+
 * It works with Laravel 5.4 or later (and may work with earlier versions too).
 
+## Original
+This package was forked from [this repository](https://github.com/hmshafeeq/userstamps) and I just modified some things that I need in my project. I had problems with changing my `Auth::guard` from `web` to `api` so I modified it to fit my needs.
+
 ## Installation
 Step 1: Install Through Composer
 

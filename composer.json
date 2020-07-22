@@ -1,5 +1,5 @@
 {
-  "name": "velitsol/userstamps",
+  "name": "benyslo/userstamps",
   "description": "A simple package to insert and load userstamps for a model automatically, it provides an eloquent trait to use in your models.",
   "type": "library",
   "license": "MIT",
@@ -12,8 +12,8 @@
   ],
   "authors": [
     {
-      "name": "Muhammad Shafeeq",
-      "email": "hmshafeeq@gmail.com"
+      "name": "Benjamin Grašič",
+      "email": "grasic1995@gmail.com"
     }
   ],
   "require": {
@@ -22,13 +22,13 @@
   },
   "autoload": {
     "psr-4": {
-      "VelitSol\\Userstamps\\": "src/"
+      "BenySLO\\Userstamps\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "VelitSol\\Userstamps\\UserstampServiceProvider"
+        "BenySLO\\Userstamps\\UserstampServiceProvider"
       ]
     }
   }
