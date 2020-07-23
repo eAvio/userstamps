@@ -12,24 +12,27 @@
 * It works with Laravel 5.4 or later (and may work with earlier versions too).
 
 ## Original
-This package was forked from [this repository](https://github.com/hmshafeeq/userstamps) and I just modified some things that I need in my project. I had problems with changing my `Auth::guard` from `web` to `api` so I modified it to fit my needs.
+This package was forked from [this repository](https://github.com/hmshafeeq/userstamps) and I just modified some things that I need in my project. I had problems when changing my `Auth::guard` from `web` to `api` so I modified it to fit my needs.
 
 ## Installation
-Step 1: Install Through Composer
+Step 1: Add this to your composer.json.
 
 ````
-composer require velitsol/userstamps
+{
+     "require": {
+     "benyslo/userstamps": "dev-fixes",
+     },
+     "repositories": [
+          {
+               "type": "vcs",
+               "url": "https://github.com/BenySLO/userstamps"
+          },
+     ],
+ }
 ````
-Step 2: Add the Service Provider
 
-```php
-// config/app.php
+Step 2: composer update
 
-'providers' => [
-    '...',
-     VelitSol\Userstamps\UserstampServiceProvider::class
-];
-```
 
 ## Usage
 
@@ -38,7 +41,7 @@ Load the trait in your model and see the magic.
 #### Scenario 1 : Load Userstamps For A Model
 You can configure this package to autoload the userstamp along with your model. This will be the case when userstamp is being set in controller or some where else manually.
 ```php
-use VelitSol\Userstamps\UserstampTrait;
+use BenySLO\Userstamps\UserstampTrait;
 
 class Post extends Model {
 
@@ -71,7 +74,7 @@ Auto insert will depend on,
 2. Field
 3. Expression
 ```php
-use VelitSol\Userstamps\UserstampTrait;
+use BenySLO\Userstamps\UserstampTrait;
 
 class Post extends Model {
 

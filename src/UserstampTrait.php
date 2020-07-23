@@ -244,7 +244,11 @@ trait UserstampTrait
         if (get_class(auth()) === 'Illuminate\Auth\Guard') {
             return auth()->getProvider()->getModel();
         }
-        return auth()->guard()->getProvider()->getModel();
+        try {
+            return auth()->guard()->getProvider()->getModel();
+        } catch (\Throwable $th) {
+            return App\User::class;
+        }
     }
 
     /**
